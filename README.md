@@ -6,7 +6,7 @@
 
 ## Deploy
 
-Login into Cloudflare Dashboard and enter `Workers` App. Create a new script, delete default code in the editor, and then copy [the `woker.js` content](https://github.com/renbaoshuo/codeforces-rating-badge/blob/master/worker.js) into the editor.
+Login into Cloudflare Dashboard and enter `Workers` App. Create a new script, delete default code in the editor, and then copy [the `worker.js` content](https://github.com/renbaoshuo/codeforces-rating-badge/blob/master/worker.js) into the editor.
 
 Optional: After saving the workers script, you can register a route for the scripts.
 

@@ -41,7 +41,7 @@ async function handleRequest(request) {
     }
     const { searchParams } = new URL(request.url);
     let username = searchParams.get('username');
-    if (username !== null) {
+    if (username !== null && username !== '') {
         const response = await fetch(`https://codeforces.com/api/user.info?handles=${username}`, { method: 'GET' });
         const data = await response.json();
         return new Response('', {

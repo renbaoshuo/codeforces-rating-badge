@@ -6,16 +6,15 @@ addEventListener('fetch', event => {
 
 /**
  * Get badge color
- * @param {int} rating 
+ * @param {number} rating 
  */
 function getBadgeColor(rating) {
     if (rating >= 2400) return "ff0000";
-    if (rating >= 2000) return "ff8c00";
-    if (rating >= 1800) return "aa00aa";
+    if (rating >= 2100) return "ff8c00";
+    if (rating >= 1900) return "aa00aa";
     if (rating >= 1600) return "0000ff";
     if (rating >= 1400) return "03a89e";
     if (rating >= 1200) return "008000";
-    if (rating >= 1000) return "88cc22";
     return "808080";
 }
 
@@ -47,7 +46,7 @@ async function handleRequest(request) {
         return new Response('', {
             status: 302,
             headers: {
-                location: `https://img.shields.io/badge/${username}-${data.result[0].rank}%20%20${data.result[0].rating}-${getBadgeColor(data.result[0].rating)}.svg?longCache=true&style=for-the-badge&logo=Codeforces&link=https://codeforces.com/profile/${username}`
+                location: `https://img.shields.io/badge/${username.replace(/-/g, '--').replace(/_/g, '__')}-${data.result[0].rank}%20%20${data.result[0].rating}-${getBadgeColor(data.result[0].rating)}.svg?longCache=true&style=for-the-badge&logo=Codeforces&link=https://codeforces.com/profile/${username}`
             }
         });
     }

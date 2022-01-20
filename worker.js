@@ -15,7 +15,7 @@ function getBadgeColor(rating) {
     if (rating >= 1600) return "0000ff";
     if (rating >= 1400) return "03a89e";
     if (rating >= 1200) return "008000";
-    return "808080";
+    return "808080";    //show as newbie
 }
 
 /**
@@ -43,7 +43,7 @@ async function handleRequest(request) {
     if (username !== null && username !== '') {
         const response = await fetch(`https://codeforces.com/api/user.info?handles=${username}`, { method: 'GET' });
         const data = await response.json();
-        let res="";
+        let res="";    //deal with the string
         for(let i = 0;i < username.length;i ++){
             res+=username[i];
             if(username[i] == "_" || username[i] == "-") res+=username[i];

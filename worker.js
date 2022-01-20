@@ -15,7 +15,6 @@ function getBadgeColor(rating) {
     if (rating >= 1600) return "0000ff";
     if (rating >= 1400) return "03a89e";
     if (rating >= 1200) return "008000";
-    if (rating >= 1000) return "88cc22";
     return "808080";
 }
 
@@ -44,10 +43,15 @@ async function handleRequest(request) {
     if (username !== null && username !== '') {
         const response = await fetch(`https://codeforces.com/api/user.info?handles=${username}`, { method: 'GET' });
         const data = await response.json();
+        let res="";
+        for(let i = 0;i < username.length;i ++){
+            res+=username[i];
+            if(username[i] == "_" || username[i] == "-") res+=username[i];
+        }
         return new Response('', {
             status: 302,
             headers: {
-                location: `https://img.shields.io/badge/${username}-${data.result[0].rank}%20%20${data.result[0].rating}-${getBadgeColor(data.result[0].rating)}.svg?longCache=true&style=for-the-badge&logo=Codeforces&link=https://codeforces.com/profile/${username}`
+                location: `https://img.shields.io/badge/${res}-${data.result[0].rank}%20%20${data.result[0].rating}-${getBadgeColor(data.result[0].rating)}.svg?longCache=true&style=for-the-badge&logo=Codeforces&link=https://codeforces.com/profile/${username}`
             }
         });
     }
